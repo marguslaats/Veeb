@@ -1,11 +1,9 @@
 <?php
 
 
-class Users
+class Users extends Controller
 {
-  public function login($id){
-    foreach ($id as $val);
-    echo $val;
+  public function login(){
+    $this->view('users/index');
   }
-
 }
