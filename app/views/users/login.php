@@ -4,7 +4,7 @@
     <div class="col-md-6 mx-auto">
       <div class="card card-body bg-light mt-5">
         <h2> Log In</h2>
-        <form action="<?php echo URLROOT;?>users/login" method="post">
+        <form action="<?php echo URLROOT;?>/users/login" method="post">
               <label for="email">E-mail: </label>
               <input type="text" id="email" class="form-control">
               <div class="form-group">
