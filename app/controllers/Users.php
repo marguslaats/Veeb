@@ -4,6 +4,10 @@
 class Users extends Controller
 {
   public function login(){
-    $this->view('users/index');
+    $this->view('users/login');
+  }
+
+  public function register(){
+    $this->view('users/register');
   }
 }
