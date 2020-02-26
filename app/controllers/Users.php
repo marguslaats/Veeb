@@ -39,9 +39,9 @@ class Users extends Controller
       if(empty($data['pass2'])){
         $data['pass2_err'] = 'Please enter the Password';
       }
-    //  echo '<pre>';
+      //echo '<pre>';
       //print_r($data);
-     // echo '</pre>';
+      //echo '</pre>';
       $this->view('users/register', $data);
     } else {
       $this->view('users/register');
