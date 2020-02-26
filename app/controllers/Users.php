@@ -29,19 +29,20 @@ class Users extends Controller
       }
       // validate email
       if(empty($data['email'])){
-        $data['email_err'] = 'Please enter the Email';
+        $data['email_err'] = 'Please enter the email';
       }
-      // validate pass
+      // validate password
       if(empty($data['pass'])){
-        $data['pass_err'] = 'Please enter the Password';
+        $data['pass_err'] = 'Please enter the password';
+      } else if(strlen($data['pass']) < 6){
+        $data['pass_err'] = 'Password must be at least 6 characters';
       }
-      // validate pass2
+      // validate password confirmation
       if(empty($data['pass2'])){
-        $data['pass2_err'] = 'Please enter the Password';
+        $data['pass2_err'] = 'Please enter the confirm password';
+      } else if($data['pass'] != $data['pass2']){
+        $data['pass2_err'] = 'Passwords do not match';
       }
-      //echo '<pre>';
-      //print_r($data);
-      //echo '</pre>';
       $this->view('users/register', $data);
     } else {
       $this->view('users/register');
