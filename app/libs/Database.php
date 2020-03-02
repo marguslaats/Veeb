@@ -53,4 +53,18 @@ class Database
   public function execute(){
     return $this->stmt->execute();
   }
+  // get result set as array of objects
+  public function getAll(){
+    $this->execute();
+    return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+  }
+  // get result as single record
+  public function getOne(){
+    $this->execute();
+    return $this->stmt->fetch(PDO::FETCH_OBJ);
+  }
+  // get row count
+  public function rowCount(){
+    return $this->stmt->rowCount();
+  }
 }
