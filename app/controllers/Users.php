@@ -50,7 +50,22 @@ class Users extends Controller
       } else if($data['pass'] != $data['pass2']){
         $data['pass2_err'] = 'Passwords do not match';
       }
-      $this->view('users/register', $data);
+    //Validate all data
+      if(empty($data['name_err']) and empty($data['email_err']) and empty($data['pass_err']) and empty($data['pass2_err'])){
+        $db = new Database();
+        $sql = 'INSERT INTO users SET '.
+     'name=:name, '.
+     'email=:email, '.
+     'pass=:pass ';
+      $db->query($sql);
+      $db->bind(':name', $data['name']);
+      $db->bind(':email', $data['email']);
+      $db->bind(':pass', $data['pass']);
+      $db->execute();
+        echo 'Ok, register';
+      } else {
+        $this->view('users/register', $data);
+      }
     } else {
       $this->view('users/register');
     }
