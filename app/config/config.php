@@ -1,10 +1,10 @@
 <?php
-//rakendusega seotud konstandid
+// rakendusega seotud konstandid
 define('URLROOT', 'http://localhost/veeb');
 define('APPROOT', dirname(dirname(__FILE__)));
-define('SITENAME', 'IS veeb');
+define('SITENAME', 'IS Veeb');
 
-//DB Constants
+// db konstandid
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
