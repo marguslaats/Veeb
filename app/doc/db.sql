@@ -40,6 +40,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `pass`, `created_at`) VALUES
-(1, 'Anna Karutina', 'anna@host.loc', 'qwerty', '2020-02-26 09:34:48');
+(1, 'Margus Lääts', 'margus@host.loc', 'qwerty', '2020-02-26 09:34:48');
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
