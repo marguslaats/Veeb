@@ -1,12 +1,12 @@
 <?php
 session_start();
 error_reporting(~E_NOTICE & ~E_WARNING);
-//configuration
+// config
 require_once 'config/config.php';
-//helper files
+// helper files
 require_once 'helpers/url_helper.php';
 require_once 'helpers/session_helper.php';
-//system
+// system
 require_once 'libs/Core.php';
 require_once 'libs/Controller.php';
 require_once 'libs/Database.php';

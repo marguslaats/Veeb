@@ -1,1 +1,2 @@
-# veeb_is2020
+# Veeb
+Veebiprogrameerimine
