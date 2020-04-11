@@ -7,4 +7,3 @@ class Pages extends Controller
         $this->view('pages/index');
     }
 }
-

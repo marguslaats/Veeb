@@ -51,7 +51,7 @@ class Posts extends Controller
                     flashSet('post_message', 'Post is Added');
                     redirect('posts');
                 } else {
-                    die('Something went wrong');
+                    die('Some went wrong');
                 }
             } else {
                 // load view with errors
@@ -59,6 +59,69 @@ class Posts extends Controller
             }
         } else {
             $this->view('posts/add');
+        }
+    }
+    // edit post
+    public function edit($id){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = array(
+                'id' => $id,
+                'title' => trim($_POST['title']),
+                'content' => trim($_POST['content']),
+                'user_id' => $_SESSION['user_id'],
+                'title_err' => '',
+                'content_err' => ''
+            );
+
+// controls for form inputs
+            if(empty($data['title'])){
+                $data['title_err'] = 'Please enter title';
+            }
+            if(empty($data['content'])){
+                $data['content_err'] = 'Please enter content text';
+            }
+// if no any errors
+            if(empty($data['title_err']) and empty($data['content_err'])){
+                if($this->postModel->editPost($data)){
+                    flashSet('post_message', 'Post Updated');
+                    redirect('posts');
+                } else {
+                    die('Something went wrong');
+                }
+            } else {
+// error message
+        $this->view('posts/edit', $data);
+            }
+        } else {
+            $post = $this->postModel->getPostById($id);
+            if ($post->user_id != $_SESSION['user_id']) {
+                redirect('posts');
+            }
+            $data = array(
+                'id' => $id,
+                'title' => $post->title,
+                'content' => $post->content
+            );
+            $this->view('posts/edit', $data);
+        }
+    }
+// delete function
+    public function delete($id){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $post = $this->postModel->getPostById($id);
+            if($post->user_id != $_SESSION['user_id']){
+                redirect('posts');
+            }
+
+            if($this->postModel->deletePost($id)){
+                redirect('posts');
+            } else {
+                die('Something went wrong');
+            }
+        } else {
+            redirect('posts');
         }
     }
 }
